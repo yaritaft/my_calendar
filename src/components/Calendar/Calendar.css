@@ -22,9 +22,10 @@
 }
 
 .popup form {
-  background: red;
   height: 500px;
   width: 500px;
+  border: 0.1px solid;
+  border-radius: 1em;
 }
 
 .popup form header {
