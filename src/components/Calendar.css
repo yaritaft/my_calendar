@@ -1,0 +1,44 @@
+.parent {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  grid-auto-flow: row;
+  border: 1px solid;
+}
+
+.parent > div {
+  border: 1px solid;
+}
+
+.popup form {
+  background: red;
+  height: 500px;
+  width: 500px;
+}
+
+.popup form header {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.popup form .formItem label {
+  display: block;
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+.popup form .formItem input {
+  margin: 0px 20px;
+}
+
+.popup form footer {
+  display: flex;
+  justify-content: center;
+  margin: 60px;
+  gap: 10px;
+}
