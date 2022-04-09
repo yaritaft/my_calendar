@@ -3,17 +3,18 @@
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(5, 1fr);
   grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  grid-row-gap: 7px;
   grid-auto-flow: row;
-  border: 1px solid;
 }
 
 .dayNames {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  grid-column-gap: 32px;
+}
+
+.dayNamesRow {
+  margin: 40px 0 20px 0;
 }
 
 .parent > div {

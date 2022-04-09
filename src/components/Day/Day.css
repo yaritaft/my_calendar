@@ -1,5 +1,5 @@
 .day {
-  width: 270px;
+  width: 260px;
   height: 123px;
 }
 
@@ -13,12 +13,13 @@
 }
 .day header .add-event {
   display: inline-flex;
-  border: 0.5px solid;
   justify-content: center;
   align-items: center;
   margin-left: auto;
   width: 15px;
   height: 15px;
+  font-size: 24px;
+  padding: 4px 4px 0 0;
 }
 
 .day .event {

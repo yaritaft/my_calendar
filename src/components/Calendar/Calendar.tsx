@@ -148,39 +148,35 @@ const goYearForward = (
 const CalendarHeader = ({ date, setDate, setDays }: CalendarHeaderProps) => {
   return (
     <div className="calendar-header">
-      <div
+      <button
         onClick={() => {
           goYearBack(date, setDate, setDays);
         }}
       >
-        {" "}
-        --{" "}
-      </div>
-      <div
+        {"<<"}
+      </button>
+      <button
         onClick={() => {
           goMonthBack(date, setDate, setDays);
         }}
       >
-        {" "}
-        -{" "}
-      </div>
+        {"<"}
+      </button>
       <div>{date.toISOString().substring(0, 7)}</div>
-      <div
+      <button
         onClick={() => {
           goMonthForward(date, setDate, setDays);
         }}
       >
-        {" "}
-        +{" "}
-      </div>
-      <div
+        {">"}
+      </button>
+      <button
         onClick={() => {
           goYearForward(date, setDate, setDays);
         }}
       >
-        {" "}
-        ++{" "}
-      </div>
+        {">>"}
+      </button>
     </div>
   );
 };
@@ -211,10 +207,12 @@ export const Calendar = () => {
   return (
     <div>
       <CalendarHeader date={date} setDate={setDate} setDays={setDays} />
-      <div className="dayNames">
-        {Object.keys(daysBefore).map((day) => (
-          <div>{capitalizeFirstLetter(day)}</div>
-        ))}
+      <div className="dayNamesRow">
+        <div className="dayNames">
+          {Object.keys(daysBefore).map((day) => (
+            <div>{capitalizeFirstLetter(day)}</div>
+          ))}
+        </div>
       </div>
       <div className="calendar">
         <div className="parent">
