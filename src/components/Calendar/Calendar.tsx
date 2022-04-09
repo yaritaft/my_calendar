@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import "./Calendar.css";
 import moment from "moment";
-import { Day } from "./Day/Day";
+import { Day } from "../Day/Day";
 import Popup from "react-modal";
 
-import { StoredEvents } from "./Event/Event";
-import { EventCreator } from "./EventCreator/EventCreator";
+import { StoredEvents } from "../Event/Event";
+import { EventCreator } from "../EventCreator/EventCreator";
 
 const getDaysArray = (start: Date, end: Date): Date[] => {
   const arr: Date[] = [];
@@ -78,6 +78,12 @@ const daysMonthAfter = (date: Date): Date[] => {
   return daysAfterMonth;
 };
 
+const generateDates = (date: Date): Date[] => [
+  ...daysMonthBefore(date),
+  ...daysMonth(date),
+  ...daysMonthAfter(date),
+];
+
 const customStyles = {
   content: {
     top: "50%",
@@ -92,13 +98,96 @@ const customStyles = {
     alignItems: "center",
   },
 };
+function capitalizeFirstLetter(string: string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+interface CalendarHeaderProps {
+  date: Date;
+  setDate: (date: Date) => void;
+  setDays: (dates: Date[]) => void;
+}
+
+const goYearBack = (
+  date: Date,
+  setDate: (date: Date) => void,
+  setDays: (dates: Date[]) => void
+) => {
+  const update = moment(date).subtract(1, "years").toDate();
+  setDate(update);
+  setDays(generateDates(update));
+};
+const goMonthBack = (
+  date: Date,
+  setDate: (date: Date) => void,
+  setDays: (dates: Date[]) => void
+) => {
+  const update = moment(date).subtract(1, "months").toDate();
+  setDate(update);
+  setDays(generateDates(update));
+};
+const goMonthForward = (
+  date: Date,
+  setDate: (date: Date) => void,
+  setDays: (dates: Date[]) => void
+) => {
+  const update = moment(date).add(1, "months").toDate();
+  setDate(update);
+  setDays(generateDates(update));
+};
+const goYearForward = (
+  date: Date,
+  setDate: (date: Date) => void,
+  setDays: (dates: Date[]) => void
+) => {
+  const update = moment(date).add(1, "years").toDate();
+  setDate(update);
+  setDays(generateDates(update));
+};
+
+const CalendarHeader = ({ date, setDate, setDays }: CalendarHeaderProps) => {
+  return (
+    <div className="calendar-header">
+      <div
+        onClick={() => {
+          goYearBack(date, setDate, setDays);
+        }}
+      >
+        {" "}
+        --{" "}
+      </div>
+      <div
+        onClick={() => {
+          goMonthBack(date, setDate, setDays);
+        }}
+      >
+        {" "}
+        -{" "}
+      </div>
+      <div>{date.toISOString().substring(0, 7)}</div>
+      <div
+        onClick={() => {
+          goMonthForward(date, setDate, setDays);
+        }}
+      >
+        {" "}
+        +{" "}
+      </div>
+      <div
+        onClick={() => {
+          goYearForward(date, setDate, setDays);
+        }}
+      >
+        {" "}
+        ++{" "}
+      </div>
+    </div>
+  );
+};
+
 export const Calendar = () => {
   const [date, setDate] = useState(new Date());
-  const [days, setDays] = useState([
-    ...daysMonthBefore(date),
-    ...daysMonth(date),
-    ...daysMonthAfter(date),
-  ]);
+  const [days, setDays] = useState(generateDates(date));
   const [storedEvents, setStoredEvents] = useState<StoredEvents>({});
   useEffect(() => {
     setStoredEvents(JSON.parse(localStorage.getItem("storedEvents")!));
@@ -120,19 +209,27 @@ export const Calendar = () => {
   }
 
   return (
-    <div className="calendar">
-      <div className="parent">
-        {days.map((day) => (
-          <Day
-            key={day.toISOString()}
-            day={day}
-            openModal={openModal}
-            events={storedEvents?.[day.toISOString().substring(0, 10)]}
-            setStoredEvents={setStoredEvents}
-          />
+    <div>
+      <CalendarHeader date={date} setDate={setDate} setDays={setDays} />
+      <div className="dayNames">
+        {Object.keys(daysBefore).map((day) => (
+          <div>{capitalizeFirstLetter(day)}</div>
         ))}
       </div>
-      {/* <button onClick={openModal}>ADD</button> */}
+      <div className="calendar">
+        <div className="parent">
+          {days.map((day) => (
+            <Day
+              key={day.toISOString()}
+              day={day}
+              openModal={openModal}
+              events={storedEvents?.[day.toISOString().substring(0, 10)]}
+              setStoredEvents={setStoredEvents}
+            />
+          ))}
+        </div>
+        {/* <button onClick={openModal}>ADD</button> */}
+      </div>
     </div>
   );
 };
