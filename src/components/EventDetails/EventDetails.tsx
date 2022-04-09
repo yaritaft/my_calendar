@@ -39,8 +39,8 @@ export const EventDetails = ({ event, date, setStoredEvents }: Properties) => {
         <div>
           <div>Title: {event.title}</div>
           <div>Description: {event.description}</div>
-          <div>From: {event.from}</div>
-          <div>To: {event.to}</div>
+          <div>From: {event.from} HS</div>
+          <div>To: {event.to} HS</div>
         </div>
         <footer>
           <button onClick={() => setOpen(false)}>Cancel</button>

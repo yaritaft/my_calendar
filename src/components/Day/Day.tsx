@@ -29,19 +29,21 @@ export const Day = ({
           {clicked && openModal(day, () => setClicked(false))}+
         </div>
       </header>
-      {events?.map((event) => (
-        <div
-          key={event.id}
-          // onClick={() => eraseEvent(day, event, setStoredEvents)}
-          className="event"
-        >
-          <EventDetails
-            event={event}
-            date={day}
-            setStoredEvents={setStoredEvents}
-          />
-        </div>
-      ))}
+      <div className="events">
+        {events?.map((event) => (
+          <div
+            key={event.id}
+            // onClick={() => eraseEvent(day, event, setStoredEvents)}
+            className="event"
+          >
+            <EventDetails
+              event={event}
+              date={day}
+              setStoredEvents={setStoredEvents}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

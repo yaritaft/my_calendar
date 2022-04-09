@@ -1,8 +1,13 @@
 .day {
   width: 260px;
   height: 133px;
-  overflow-y: auto;
+  overflow: hidden;
+}
+
+.events {
   overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 100px;
 }
 
 .day header {
