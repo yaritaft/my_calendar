@@ -6,7 +6,13 @@ interface Properties {
   onCancel: () => void;
 }
 
-const storeEvent = (date: Date, from: string, to: string, title: string) => {
+const storeEvent = (
+  date: Date,
+  from: string,
+  to: string,
+  title: string,
+  description: string
+) => {
   const today = date.toISOString().substring(0, 10);
   const storedEvents =
     JSON.parse(localStorage.getItem("storedEvents")!) === null
@@ -14,7 +20,7 @@ const storeEvent = (date: Date, from: string, to: string, title: string) => {
       : JSON.parse(localStorage.getItem("storedEvents")!);
   storedEvents[today] = [
     ...(storedEvents?.[today] || []),
-    { title, from, to, id: crypto.randomUUID() },
+    { title, from, to, description, id: crypto.randomUUID() },
   ];
   const toStore = JSON.stringify(storedEvents);
   localStorage.setItem("storedEvents", toStore);
@@ -42,6 +48,7 @@ export const eraseEvent = (
 
 export const EventCreator = ({ date, onCancel }: Properties) => {
   const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [from, setFrom] = useState("00:00");
   const [to, setTo] = useState("00:00");
   const [dateSelected, setDateSelected] = useState(date);
@@ -51,7 +58,7 @@ export const EventCreator = ({ date, onCancel }: Properties) => {
     if (fromParsed >= toParsed) {
       alert("From time cannot be later than to time.");
     } else {
-      storeEvent(dateSelected, from, to, title);
+      storeEvent(dateSelected, from, to, title, description);
       onCancel();
     }
   }, [title, dateSelected, from, to]);
@@ -72,17 +79,30 @@ export const EventCreator = ({ date, onCancel }: Properties) => {
           onChange={(e) => setTitle(e.target.value)}
         />
       </div>
-      <div className="formItem">
-        <label>From</label>
-        <input
-          type="time"
-          value={from}
-          onChange={(e) => setFrom(e.target.value)}
-        />
+      <div className="time-range-picker">
+        <div className="formItem">
+          <label>From</label>
+          <input
+            type="time"
+            value={from}
+            onChange={(e) => setFrom(e.target.value)}
+          />
+        </div>
+        <div className="formItem">
+          <label>To</label>
+          <input
+            type="time"
+            value={to}
+            onChange={(e) => setTo(e.target.value)}
+          />
+        </div>
       </div>
       <div className="formItem">
-        <label>To</label>
-        <input type="time" value={to} onChange={(e) => setTo(e.target.value)} />
+        <label>Description </label>
+        <textarea
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        ></textarea>
       </div>
       <footer>
         <button onClick={onCancel}>Cancel</button>

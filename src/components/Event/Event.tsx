@@ -3,6 +3,7 @@ export interface Event {
   title: string;
   from: string;
   to: string;
+  description: string;
 }
 
 export interface StoredEvents {

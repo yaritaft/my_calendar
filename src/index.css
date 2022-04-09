@@ -1,3 +1,9 @@
 * {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
+
+*,
+*:focus,
+*:hover {
+  outline: none;
+}

@@ -6,8 +6,6 @@ Things to improve
 
 # More modularization along the project
 
-# Add move between months and years
+# Fix long descriptions (add description and title)
 
-# Add view event and erase button inside of it
-
-# Activate scroll if the list is too large
+# Add tests

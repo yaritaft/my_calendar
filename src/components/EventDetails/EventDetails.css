@@ -12,11 +12,12 @@
 }
 
 .popup-event-details div {
-  margin: 50px 50px;
+  margin: 50px 0px;
 }
 
 .popup-event-details div div {
   margin: 20px;
+  overflow-wrap: break-word;
 }
 
 .popup-event-details footer {

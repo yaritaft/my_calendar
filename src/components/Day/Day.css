@@ -1,6 +1,8 @@
 .day {
   width: 260px;
-  height: 123px;
+  height: 133px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .day header {

@@ -37,7 +37,8 @@ export const EventDetails = ({ event, date, setStoredEvents }: Properties) => {
       <Popup isOpen={open} className="popup-event-details" style={customStyles}>
         <header>{date.toISOString().substring(0, 10)}</header>
         <div>
-          <div>Description: {event.title}</div>
+          <div>Title: {event.title}</div>
+          <div>Description: {event.description}</div>
           <div>From: {event.from}</div>
           <div>To: {event.to}</div>
         </div>

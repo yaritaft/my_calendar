@@ -41,8 +41,14 @@
   font-weight: bold;
 }
 
-.popup form .formItem input {
+.popup form .formItem input,
+textarea {
   margin: 0px 20px;
+}
+
+.popup form .formItem textarea {
+  height: 80px;
+  width: 80%;
 }
 
 .popup form footer {
@@ -57,4 +63,9 @@
   gap: 20px;
   justify-content: center;
   font-size: 32px;
+}
+
+.time-range-picker {
+  display: flex;
+  margin: 20px 0;
 }
