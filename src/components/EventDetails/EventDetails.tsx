@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Popup from "react-modal";
-import { Event, StoredEvents } from "../Event/Event";
-import { eraseEvent } from "../EventCreator/EventCreator";
+import { eraseEvent, StoredEvents } from "../../actions/localStorage";
+import { Event } from "../Event/Event";
 import "./EventDetails.css";
 
 interface Properties {

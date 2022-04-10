@@ -1,8 +1,8 @@
 import "./Day.css";
-import { Event, StoredEvents } from "../Event/Event";
+import { Event } from "../Event/Event";
 import { useState } from "react";
-import { eraseEvent } from "../EventCreator/EventCreator";
 import { EventDetails } from "../EventDetails/EventDetails";
+import { StoredEvents } from "../../actions/localStorage";
 
 interface Properties {
   events?: Event[];
@@ -31,11 +31,7 @@ export const Day = ({
       </header>
       <div className="events">
         {events?.map((event) => (
-          <div
-            key={event.id}
-            // onClick={() => eraseEvent(day, event, setStoredEvents)}
-            className="event"
-          >
+          <div key={event.id} className="event">
             <EventDetails
               event={event}
               date={day}

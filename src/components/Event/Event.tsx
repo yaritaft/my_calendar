@@ -6,10 +6,6 @@ export interface Event {
   description: string;
 }
 
-export interface StoredEvents {
-  [date: string]: Event[];
-}
-
 interface Properties extends Event {}
 
 export const Day = ({ title, from, to }: Properties) => {

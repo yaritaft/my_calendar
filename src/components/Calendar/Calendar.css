@@ -45,6 +45,7 @@
 .popup form .formItem input,
 textarea {
   margin: 0px 20px;
+  padding: 8px;
 }
 
 .popup form .formItem textarea {
