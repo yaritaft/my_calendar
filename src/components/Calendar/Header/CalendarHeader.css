@@ -1,0 +1,9 @@
+.button-handler {
+  color: grey;
+  font-weight: bolder;
+}
+
+.button-handler:hover {
+  color: lightgrey;
+  font-weight: bolder;
+}

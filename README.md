@@ -1,11 +1,17 @@
-Things to improve
+# Setup
 
-# Deep compare in stored events
+Node 14 or more is needed.
+Inside the folder do and
 
-# Use context to send and handle stored events along the project
+```
+npm install
+npm start
+```
 
-# More modularization along the project
+Go to
 
-# Fix long descriptions (add description and title)
+http://localhost:3000/
 
-# Add tests
+# Constraints
+
+The component is working in 1920 x 1080 resolution and 1280 x 720 resolutions.

@@ -1,8 +1,14 @@
 import "./Day.css";
-import { Event } from "../Event/Event";
 import { useState } from "react";
 import { EventDetails } from "../EventDetails/EventDetails";
 import { StoredEvents } from "../../actions/localStorage";
+export interface Event {
+  id: string;
+  title: string;
+  from: string;
+  to: string;
+  description: string;
+}
 
 interface Properties {
   events?: Event[];

@@ -10,7 +10,7 @@
 .dayNames {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-column-gap: 32px;
+  text-align: center;
 }
 
 .dayNamesRow {
@@ -60,11 +60,22 @@ textarea {
   gap: 10px;
 }
 
-.calendar-header {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  font-size: 32px;
+@media only screen and (max-width: 1280px) {
+  .calendar-header {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    font-size: 32px;
+    width: 150%;
+  }
+}
+@media only screen and (max-width: 1920px) and (min-width: 1281px) {
+  .calendar-header {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    font-size: 32px;
+  }
 }
 
 .time-range-picker {

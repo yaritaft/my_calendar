@@ -4,6 +4,7 @@ import {
   goYearBack,
   goYearForward,
 } from "../../../actions/Calendar/Header/calendarHeader";
+import "./CalendarHeader.css";
 
 interface Ṕroperties {
   date: Date;
@@ -14,35 +15,40 @@ interface Ṕroperties {
 export const CalendarHeader = ({ date, setDate, setDays }: Ṕroperties) => {
   return (
     <div className="calendar-header">
-      <button
+      <div
+        className="button-handler"
         onClick={() => {
           goYearBack(date, setDate, setDays);
         }}
       >
         {"<<"}
-      </button>
-      <button
+      </div>
+      <div
+        className="button-handler"
         onClick={() => {
           goMonthBack(date, setDate, setDays);
         }}
       >
         {"<"}
-      </button>
+      </div>
       <div>{date.toISOString().substring(0, 7)}</div>
-      <button
+
+      <div
+        className="button-handler"
         onClick={() => {
           goMonthForward(date, setDate, setDays);
         }}
       >
         {">"}
-      </button>
-      <button
+      </div>
+      <div
+        className="button-handler"
         onClick={() => {
           goYearForward(date, setDate, setDays);
         }}
       >
         {">>"}
-      </button>
+      </div>
     </div>
   );
 };

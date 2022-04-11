@@ -1,4 +1,4 @@
-import { Event } from "../components/Event/Event";
+import { Event } from "../components/Day/Day";
 
 export interface StoredEvents {
   [date: string]: Event[];

@@ -1,42 +1,23 @@
-import { useEffect, useState } from "react";
-import "./Calendar.css";
-import { Day } from "../Day/Day";
+import { useState } from "react";
 import Popup from "react-modal";
 
+import "./Calendar.css";
+import { Day } from "../Day/Day";
 import { EventCreator } from "../EventCreator/EventCreator";
 import { daysBefore, generateDates } from "../../actions/time";
 import { capitalizeFirstLetter } from "../../actions/string";
 import { CalendarHeader } from "./Header/CalendarHeader";
 import { StoredEvents } from "../../actions/localStorage";
-
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    margin: "auto",
-  },
-  overlay: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "500px",
-    width: "500px",
-    backgroundColor: "white",
-    margin: "auto",
-    borderRadius: "1em",
-    boxShadow: "5px 5px 5px black",
-  },
-};
+import { customStylesCreateEVentPopUp } from "./customStylesPopUp";
+import useDeepCompareEffect from "use-deep-compare-effect";
 
 export const Calendar = () => {
   const [date, setDate] = useState(new Date());
   const [days, setDays] = useState(generateDates(date));
   const [storedEvents, setStoredEvents] = useState<StoredEvents>({});
-  useEffect(() => {
+  useDeepCompareEffect(() => {
     setStoredEvents(JSON.parse(localStorage.getItem("storedEvents")!));
-  }, [JSON.stringify(storedEvents)]); // TODO: IMPROVE THIS BECAUSE OBJECT IS NOT ORDERED
+  }, [storedEvents]);
 
   const [isOpenPopUp, setIsOpenPopUp] = useState(false);
   const openModal = (date: Date, closeModal: () => void) => {
@@ -45,7 +26,7 @@ export const Calendar = () => {
       <Popup
         isOpen={isOpenPopUp}
         className="popup"
-        style={customStyles}
+        style={customStylesCreateEVentPopUp}
         onRequestClose={closeModal}
       >
         <EventCreator date={date} onCancel={closeModal} />
