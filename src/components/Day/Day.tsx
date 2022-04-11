@@ -3,7 +3,7 @@ import { useState } from "react";
 import { EventDetails } from "../EventDetails/EventDetails";
 import { StoredEvents } from "../../actions/localStorage";
 export interface Event {
-  id: string;
+  id?: string;
   title: string;
   from: string;
   to: string;

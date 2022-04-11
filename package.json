@@ -12,6 +12,9 @@
     "@types/react-dom": "^17.0.9",
     "moment": "^2.29.2",
     "react": "^18.0.0",
+    "react-calendar": "^3.7.0",
+    "react-datepicker": "^4.7.0",
+    "react-datetime-picker": "^3.5.0",
     "react-dom": "^18.0.0",
     "react-modal": "^3.14.4",
     "react-scripts": "5.0.0",
@@ -45,6 +48,8 @@
     ]
   },
   "devDependencies": {
+    "@types/react-datepicker": "^4.4.0",
+    "@types/react-datetime-picker": "^3.4.1",
     "@types/react-modal": "^3.13.1"
   }
 }

@@ -2,6 +2,7 @@
   height: 300px;
   width: 300px;
   border-radius: 1em;
+  margin: 0 0 auto;
 }
 
 .popup-event-details header {

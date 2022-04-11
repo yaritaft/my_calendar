@@ -1,3 +1,7 @@
+# TODO: ADD IN HOOK ON UPDATE FUNCTION
+
+# Check update, save and on cancel and on edit
+
 # Setup
 
 Node 14 or more is needed.

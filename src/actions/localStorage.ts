@@ -6,19 +6,16 @@ export interface StoredEvents {
 
 export const storeEvent = (
   date: Date,
-  from: string,
-  to: string,
-  title: string,
-  description: string
+  { from, to, title, description, id }: Event
 ) => {
-  const today = date.toISOString().substring(0, 10);
+  const stringDate = date.toISOString().substring(0, 10);
   const storedEvents =
     JSON.parse(localStorage.getItem("storedEvents")!) === null
       ? {}
       : JSON.parse(localStorage.getItem("storedEvents")!);
-  storedEvents[today] = [
-    ...(storedEvents?.[today] || []),
-    { title, from, to, description, id: crypto.randomUUID() },
+  storedEvents[stringDate] = [
+    ...(storedEvents?.[stringDate] || []),
+    { title, from, to, description, id: id ?? crypto.randomUUID() },
   ];
   const toStore = JSON.stringify(storedEvents);
   localStorage.setItem("storedEvents", toStore);
@@ -42,4 +39,14 @@ export const eraseEvent = (
   const toStore = JSON.stringify(storedEvents);
   localStorage.setItem("storedEvents", toStore);
   setStoredEvents(storedEvents);
+};
+
+export const updateEvent = (
+  rawDate: Date,
+  eventToBeRemoved: Event,
+  eventUpdated: Event,
+  setStoredEvents: (storedEvents: StoredEvents) => void
+) => {
+  eraseEvent(rawDate, eventToBeRemoved, setStoredEvents);
+  storeEvent(rawDate, eventUpdated);
 };

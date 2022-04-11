@@ -2,6 +2,7 @@ import { useState } from "react";
 import Popup from "react-modal";
 import { eraseEvent, StoredEvents } from "../../actions/localStorage";
 import { Event } from "../Day/Day";
+import { EventCreator } from "../EventCreator/EventCreator";
 import "./EventDetails.css";
 import { customStylesEventDetails } from "./eventDetailsPopUpCustomStyles";
 
@@ -21,19 +22,13 @@ export const EventDetails = ({ event, date, setStoredEvents }: Properties) => {
         className="popup-event-details"
         style={customStylesEventDetails}
       >
-        <header>{date.toISOString().substring(0, 10)}</header>
-        <div>
-          <div>Title: {event.title}</div>
-          <div>Description: {event.description}</div>
-          <div>From: {event.from} HS</div>
-          <div>To: {event.to} HS</div>
-        </div>
-        <footer>
-          <button onClick={() => setOpen(false)}>Cancel</button>
-          <button onClick={() => eraseEvent(date, event, setStoredEvents)}>
-            Delete
-          </button>
-        </footer>
+        <EventCreator
+          event={event}
+          date={date}
+          setStoredEvents={setStoredEvents}
+          editMode={true}
+          onCancel={() => setOpen(false)}
+        />
       </Popup>
     </>
   );

@@ -1,10 +1,29 @@
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import DateTimePicker from "react-datetime-picker";
+import Calendar from "react-calendar";
+import { Event } from "../Day/Day";
+
+import "react-calendar/dist/Calendar.css";
+
+import "./EventCreator.css";
+
 import { useEventCreator } from "../../hooks/Calendar/useEventCreator.hook";
+import { eraseEvent, StoredEvents } from "../../actions/localStorage";
 interface Properties {
   date: Date;
   onCancel: () => void;
+  event?: Event;
+  setStoredEvents?: (storedEvents: StoredEvents) => void;
+  editMode: boolean;
 }
 
-export const EventCreator = ({ date, onCancel }: Properties) => {
+export const EventCreator = ({
+  date,
+  onCancel,
+  event,
+  setStoredEvents,
+}: Properties) => {
   const {
     title,
     setTitle,
@@ -17,7 +36,7 @@ export const EventCreator = ({ date, onCancel }: Properties) => {
     dateSelected,
     setDateSelected,
     onSave,
-  } = useEventCreator({ date, onCancel });
+  } = useEventCreator({ date, onCancel, event });
   return (
     <form>
       <header>
@@ -63,6 +82,11 @@ export const EventCreator = ({ date, onCancel }: Properties) => {
       <footer>
         <button onClick={onCancel}>Cancel</button>
         <button onClick={onSave}>Save</button>
+        {event && setStoredEvents && (
+          <button onClick={() => eraseEvent(date, event, setStoredEvents)}>
+            Delete
+          </button>
+        )}
       </footer>
     </form>
   );

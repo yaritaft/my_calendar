@@ -4,7 +4,6 @@ export const customStylesEventDetails = {
     left: "50%",
     right: "auto",
     bottom: "auto",
-    margin: "auto",
   },
   overlay: {
     display: "flex",

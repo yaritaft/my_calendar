@@ -29,7 +29,7 @@ export const Calendar = () => {
         style={customStylesCreateEVentPopUp}
         onRequestClose={closeModal}
       >
-        <EventCreator date={date} onCancel={closeModal} />
+        <EventCreator date={date} onCancel={closeModal} editMode={false} />
       </Popup>
     );
   };

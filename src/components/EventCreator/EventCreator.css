@@ -1,4 +1,4 @@
-.formItem {
-  height: 100%;
-  width: 100%;
+.react-datepicker__input-container {
+  display: inline-flex;
+  justify-content: center;
 }
