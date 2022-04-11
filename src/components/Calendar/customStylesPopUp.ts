@@ -10,7 +10,7 @@ export const customStylesCreateEVentPopUp = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "500px",
+    height: "600px",
     width: "500px",
     backgroundColor: "white",
     margin: "auto",

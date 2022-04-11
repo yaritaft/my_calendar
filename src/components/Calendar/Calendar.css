@@ -22,7 +22,7 @@
 }
 
 .popup form {
-  height: 500px;
+  height: 600px;
   width: 500px;
   border: 0.1px solid;
   border-radius: 1em;
@@ -56,8 +56,8 @@ textarea {
 .popup form footer {
   display: flex;
   justify-content: center;
-  margin: 60px;
   gap: 10px;
+  margin: 60px;
 }
 
 @media only screen and (max-width: 1280px) {
