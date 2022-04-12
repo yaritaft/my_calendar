@@ -8,7 +8,7 @@ import { daysBefore, generateDates } from "../../actions/time";
 import { capitalizeFirstLetter } from "../../actions/string";
 import { CalendarHeader } from "./Header/CalendarHeader";
 import { StoredEvents } from "../../actions/localStorage";
-import { customStylesCreateEVentPopUp } from "./customStylesPopUp";
+import { customStylesCreateEventPopUp } from "./customStylesPopUp";
 import useDeepCompareEffect from "use-deep-compare-effect";
 
 export const Calendar = () => {
@@ -26,7 +26,7 @@ export const Calendar = () => {
       <Popup
         isOpen={isOpenPopUp}
         className="popup"
-        style={customStylesCreateEVentPopUp}
+        style={customStylesCreateEventPopUp}
         onRequestClose={closeModal}
       >
         <EventCreator date={date} onCancel={closeModal} editMode={false} />

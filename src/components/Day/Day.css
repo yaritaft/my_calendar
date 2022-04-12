@@ -31,11 +31,26 @@
 
 .day .event {
   margin: auto;
-  background: blue;
   color: white;
   border-radius: 4px;
   margin: 2px;
   padding: 3px;
   width: 95%;
   font-weight: bold;
+}
+
+.day .event.blue {
+  background: blue;
+}
+
+.day .event.red {
+  background: darkred;
+}
+
+.day .event.green {
+  background: green;
+}
+
+.day .event.violet {
+  background: darkviolet;
 }

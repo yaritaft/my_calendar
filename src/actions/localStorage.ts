@@ -6,7 +6,7 @@ export interface StoredEvents {
 
 export const storeEvent = (
   date: Date,
-  { from, to, title, description, id }: Event
+  { from, to, title, description, color, id }: Event
 ) => {
   const stringDate = date.toISOString().substring(0, 10);
   const storedEvents =
@@ -15,7 +15,7 @@ export const storeEvent = (
       : JSON.parse(localStorage.getItem("storedEvents")!);
   storedEvents[stringDate] = [
     ...(storedEvents?.[stringDate] || []),
-    { title, from, to, description, id: id ?? crypto.randomUUID() },
+    { title, from, to, description, color, id: id ?? crypto.randomUUID() },
   ];
   const toStore = JSON.stringify(storedEvents);
   localStorage.setItem("storedEvents", toStore);

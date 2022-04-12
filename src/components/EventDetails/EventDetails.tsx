@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Popup from "react-modal";
-import { eraseEvent, StoredEvents } from "../../actions/localStorage";
+import { StoredEvents } from "../../actions/localStorage";
 import { Event } from "../Day/Day";
 import { EventCreator } from "../EventCreator/EventCreator";
-import "./EventDetails.css";
-import { customStylesEventDetails } from "./eventDetailsPopUpCustomStyles";
+import "../Calendar/Calendar.css";
+import { customStylesCreateEventPopUp } from "../Calendar/customStylesPopUp";
 
 interface Properties {
   event: Event;
@@ -19,8 +19,8 @@ export const EventDetails = ({ event, date, setStoredEvents }: Properties) => {
       <div onClick={() => setOpen(true)}>{event.title}</div>
       <Popup
         isOpen={open}
-        className="popup-event-details"
-        style={customStylesEventDetails}
+        className="popup"
+        style={customStylesCreateEventPopUp}
       >
         <EventCreator
           event={event}

@@ -4,6 +4,7 @@ import { EventDetails } from "../EventDetails/EventDetails";
 import { StoredEvents } from "../../actions/localStorage";
 export interface Event {
   id?: string;
+  color: string;
   title: string;
   from: string;
   to: string;
@@ -37,7 +38,7 @@ export const Day = ({
       </header>
       <div className="events">
         {events?.map((event) => (
-          <div key={event.id} className="event">
+          <div key={event.id} className={`event ${event.color}`}>
             <EventDetails
               event={event}
               date={day}

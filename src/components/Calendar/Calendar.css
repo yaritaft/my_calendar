@@ -48,6 +48,12 @@ textarea {
   padding: 8px;
 }
 
+.color-picker {
+  margin: 10px 20px;
+  padding: 8px;
+  display: block;
+}
+
 .popup form .formItem textarea {
   height: 80px;
   width: 80%;

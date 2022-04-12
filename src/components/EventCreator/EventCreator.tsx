@@ -1,11 +1,4 @@
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import DateTimePicker from "react-datetime-picker";
-import Calendar from "react-calendar";
 import { Event } from "../Day/Day";
-
-import "react-calendar/dist/Calendar.css";
-
 import "./EventCreator.css";
 
 import { useEventCreator } from "../../hooks/Calendar/useEventCreator.hook";
@@ -17,6 +10,13 @@ interface Properties {
   setStoredEvents?: (storedEvents: StoredEvents) => void;
   editMode: boolean;
 }
+
+const options = [
+  { value: "blue", label: "Blue" },
+  { value: "red", label: "Red" },
+  { value: "green", label: "Green" },
+  { value: "violet", label: "Violet" },
+];
 
 export const EventCreator = ({
   date,
@@ -37,6 +37,8 @@ export const EventCreator = ({
     setDateSelected,
     onUpdate,
     onSave,
+    color,
+    setColor,
   } = useEventCreator({ date, onCancel, event });
 
   return (
@@ -55,6 +57,18 @@ export const EventCreator = ({
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
+      </div>
+      <div className="formItem">
+        <label>Color </label>
+        <select
+          className="color-picker"
+          value={color}
+          onChange={(e) => setColor(e.target.value)}
+        >
+          {options.map((option) => (
+            <option value={option.value}>{option.label}</option>
+          ))}
+        </select>
       </div>
       <div className="time-range-picker">
         <div className="formItem">

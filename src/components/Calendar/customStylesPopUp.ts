@@ -1,4 +1,4 @@
-export const customStylesCreateEVentPopUp = {
+export const customStylesCreateEventPopUp = {
   content: {
     top: "50%",
     left: "50%",
