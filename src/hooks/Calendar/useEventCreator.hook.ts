@@ -1,6 +1,10 @@
 import { useCallback, useState } from "react";
 import { Event } from "../../components/Day/Day";
-import { storeEvent } from "../../actions/localStorage";
+import {
+  StoredEvents,
+  storeEvent,
+  updateEvent,
+} from "../../actions/localStorage";
 
 interface Properties {
   date: Date;
@@ -25,6 +29,20 @@ export const useEventCreator = ({ date, onCancel, event }: Properties) => {
       onCancel();
     }
   }, [title, dateSelected, from, to, description, onCancel]);
+  const onUpdate = useCallback(
+    (setStoredEvents: (storedEvents: StoredEvents) => void) => {
+      const fromParsed = Date.parse(`01/01/2011 ${from}`);
+      const toParsed = Date.parse(`01/01/2011 ${to}`);
+      if (fromParsed >= toParsed) {
+        alert("From time cannot be later than to time.");
+      } else if (event) {
+        const eventToBeStored: Event = { from, to, title, description };
+        updateEvent(date, event, eventToBeStored, setStoredEvents);
+        onCancel();
+      }
+    },
+    [title, dateSelected, from, to, description, date, event, onCancel]
+  );
   return {
     title,
     setTitle,
@@ -37,5 +55,6 @@ export const useEventCreator = ({ date, onCancel, event }: Properties) => {
     dateSelected,
     setDateSelected,
     onSave,
+    onUpdate,
   };
 };

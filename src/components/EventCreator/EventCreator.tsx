@@ -35,8 +35,10 @@ export const EventCreator = ({
     setTo,
     dateSelected,
     setDateSelected,
+    onUpdate,
     onSave,
   } = useEventCreator({ date, onCancel, event });
+
   return (
     <form>
       <header>
@@ -81,7 +83,17 @@ export const EventCreator = ({
       </div>
       <footer>
         <button onClick={onCancel}>Cancel</button>
-        <button onClick={onSave}>Save</button>
+        {event && setStoredEvents ? (
+          <button
+            onClick={() => {
+              onUpdate(setStoredEvents);
+            }}
+          >
+            Save
+          </button>
+        ) : (
+          <button onClick={onSave}>Save</button>
+        )}
         {event && setStoredEvents && (
           <button onClick={() => eraseEvent(date, event, setStoredEvents)}>
             Delete
