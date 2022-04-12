@@ -1,3 +1,7 @@
+# Deployment link
+
+https://master--tubular-dragon-f7b146.netlify.app/
+
 # Setup
 
 Node 14 or more is needed.
@@ -14,7 +18,7 @@ http://localhost:3000/
 
 # Constraints
 
-The component is working in 1920 x 1080 resolution and 1280 x 720 resolutions.
+The component is working on 1920 x 1080 and 1280 x 720 resolutions.
 
 # Improvements
 
